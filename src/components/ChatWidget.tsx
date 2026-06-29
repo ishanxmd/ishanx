@@ -7,12 +7,7 @@ type Message = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
-const quickReplies = [
-  "Explain quantum computing simply",
-  "Write a Python function",
-  "Help me brainstorm ideas",
-  "What are today's top headlines?",
-];
+const INITIAL_MESSAGES: Message[] = [];
 
 async function streamChat({
   messages,
