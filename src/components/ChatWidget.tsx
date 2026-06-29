@@ -163,13 +163,13 @@ const ChatWidget = () => {
             <div className="px-4 py-3 gradient-primary flex items-center gap-3">
               <Bot className="w-6 h-6 text-primary-foreground" />
               <div>
-                <div className="font-display text-sm tracking-wider text-primary-foreground">AI Assistant</div>
-                <div className="text-xs text-primary-foreground/70">General-purpose AI</div>
+                <div className="font-display text-sm tracking-wider text-primary-foreground">ISHAN-X AI</div>
+                <div className="text-xs text-primary-foreground/70">General-purpose AI assistant</div>
               </div>
               <div className="ml-auto flex items-center gap-2">
                 <button
                   onClick={() => {
-                    setMessages([{ role: "assistant", content: "👋 Hi! I'm your AI assistant. Ask me anything — from coding and writing to general knowledge and brainstorming." }]);
+                    setMessages(INITIAL_MESSAGES);
                     setInput("");
                   }}
                   title="Clear chat"
