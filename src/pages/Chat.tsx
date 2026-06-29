@@ -101,8 +101,8 @@ const Chat = () => {
           <ArrowLeft className="w-5 h-5" />
         </Link>
         <div>
-          <h1 className="text-base font-semibold">AI Assistant</h1>
-          <p className="text-xs text-white/50">General-purpose AI</p>
+          <h1 className="text-base font-semibold">ISHAN-X AI</h1>
+          <p className="text-xs text-white/50">General-purpose AI assistant</p>
         </div>
       </header>
 
