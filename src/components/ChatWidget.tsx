@@ -147,7 +147,7 @@ const ChatWidget = () => {
         className="fixed bottom-6 right-6 z-50 px-5 h-12 rounded-full bg-[#0071e3] hover:bg-[#0077ed] flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
         whileTap={{ scale: 0.95 }}
       >
-        {isOpen ? <X className="w-5 h-5 text-primary-foreground" /> : <><MessageCircle className="w-5 h-5 text-primary-foreground" /><span className="font-display text-xs tracking-widest text-primary-foreground">AI Chat</span></>}
+        {isOpen ? <X className="w-5 h-5 text-primary-foreground" /> : <><MessageCircle className="w-5 h-5 text-primary-foreground" /><span className="font-display text-xs tracking-widest text-primary-foreground">Support AI</span></>}
       </motion.button>
 
       <AnimatePresence>
