@@ -19,6 +19,8 @@ const SPLASH_KEY = "splashShown";
 const Index = () => {
   const [showSplash, setShowSplash] = useState(() => {
     if (typeof window !== "undefined") {
+      // Skip splash when returning to a specific section
+      if (window.location.hash) return false;
       return sessionStorage.getItem(SPLASH_KEY) !== "true";
     }
     return true;
@@ -28,6 +30,16 @@ const Index = () => {
     setShowSplash(false);
     sessionStorage.setItem(SPLASH_KEY, "true");
   }, []);
+
+  useEffect(() => {
+    if (showSplash) return;
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+    requestAnimationFrame(() => {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "auto", block: "start" });
+    });
+  }, [showSplash]);
 
   return (
     <>
