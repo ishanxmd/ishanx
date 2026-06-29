@@ -37,9 +37,7 @@ const Chat = () => {
           Authorization: `Bearer ${SUPABASE_KEY}`,
         },
         body: JSON.stringify({
-          messages: next.filter((m) => m.role !== "assistant" || messages.indexOf(m) !== 0).map(
-            (m) => ({ role: m.role, content: m.content }),
-          ),
+          messages: next.map((m) => ({ role: m.role, content: m.content })),
         }),
       });
       if (!res.ok) {
