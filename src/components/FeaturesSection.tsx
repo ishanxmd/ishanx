@@ -43,6 +43,7 @@ const FeaturesSection = () => {
               {f.href ? (
                 <Link
                   to={f.href}
+                  onClick={() => sessionStorage.setItem("returnScrollY", String(window.scrollY))}
                   className="block rounded-3xl bg-white/[0.04] border border-white/10 p-8 hover:bg-white/[0.07] hover:border-[#0071e3]/50 transition-colors cursor-pointer h-full"
                 >
                   <f.icon className="w-8 h-8 text-white mb-6" strokeWidth={1.5} />
