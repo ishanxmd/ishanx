@@ -44,10 +44,10 @@ const FeaturesSection = () => {
                 <Link
                   to={f.href}
                   onClick={() => sessionStorage.setItem("returnScrollY", String(window.scrollY))}
-                  className="block rounded-3xl bg-white/[0.04] border border-white/10 p-8 hover:bg-white/[0.07] hover:border-[#0071e3]/50 transition-colors cursor-pointer h-full"
+                  className="block rounded-3xl bg-white/[0.04] border border-white/10 p-8 hover:bg-white/[0.07] hover:border-primary/50 transition-colors cursor-pointer h-full"
                 >
-                  <f.icon className="w-8 h-8 text-white mb-6" strokeWidth={1.5} />
-                  <h3 className="text-xl font-semibold tracking-tight text-white mb-2">{f.title}</h3>
+                  <f.icon className={`w-8 h-8 mb-6 ${f.title === "AI Chat" ? "text-primary" : "text-white"}`} strokeWidth={1.5} />
+                  <h3 className={`text-xl font-semibold tracking-tight mb-2 ${f.title === "AI Chat" ? "text-primary" : "text-white"}`}>{f.title}</h3>
                   <p className="text-sm text-white/60 leading-relaxed">{f.desc}</p>
                 </Link>
               ) : (
