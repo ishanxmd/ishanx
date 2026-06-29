@@ -108,6 +108,11 @@ const Chat = () => {
 
       <main className="flex-1 overflow-y-auto">
         <div className="max-w-3xl mx-auto px-4 py-6 space-y-5">
+          {messages.length === 0 && !loading && (
+            <div className="text-center text-white/40 text-sm pt-20">
+              Ask ISHAN-X AI anything to start the conversation.
+            </div>
+          )}
           {messages.map((m, i) => (
             <div
               key={i}
