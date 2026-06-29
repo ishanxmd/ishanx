@@ -126,8 +126,8 @@ const ChatWidget = () => {
       });
     };
 
-    // Only send the conversation history (exclude the initial greeting for cleaner context)
-    const apiMessages = newMessages.slice(1).map(({ role, content }) => ({ role, content }));
+    // Send full conversation history for context
+    const apiMessages = newMessages.map(({ role, content }) => ({ role, content }));
 
     await streamChat({
       messages: apiMessages,
