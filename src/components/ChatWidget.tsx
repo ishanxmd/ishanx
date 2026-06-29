@@ -229,21 +229,6 @@ const ChatWidget = () => {
               )}
             </div>
 
-            {/* Quick replies */}
-            {messages.length <= 2 && (
-              <div className="px-4 pb-2 flex flex-wrap gap-1.5">
-                {quickReplies.map((q) => (
-                  <button
-                    key={q}
-                    onClick={() => handleSend(q)}
-                    disabled={isLoading}
-                    className="text-xs px-2.5 py-1.5 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors font-body disabled:opacity-50"
-                  >
-                    {q}
-                  </button>
-                ))}
-              </div>
-            )}
 
             {/* Input */}
             <div className="p-3 border-t border-border/50 flex gap-2">
