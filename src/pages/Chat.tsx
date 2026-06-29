@@ -1,11 +1,47 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Send, Loader2 } from "lucide-react";
+import { ArrowLeft, Send, Loader2, Plus, Trash2 } from "lucide-react";
+import {
+  SidebarProvider,
+  Sidebar,
+  SidebarContent,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarTrigger,
+  useSidebar,
+} from "@/components/ui/sidebar";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+
+const ChatSidebar = ({ onNewChat, onClearChat }: { onNewChat: () => void; onClearChat: () => void }) => {
+  const { state } = useSidebar();
+  const collapsed = state === "collapsed";
+
+  return (
+    <Sidebar collapsible="icon">
+      <SidebarContent className="pt-3">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton onClick={onNewChat} tooltip="New Chat">
+              <Plus className="h-4 w-4" />
+              {!collapsed && <span>New Chat</span>}
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton onClick={onClearChat} tooltip="Clear Chat">
+              <Trash2 className="h-4 w-4" />
+              {!collapsed && <span>Clear Chat</span>}
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarContent>
+    </Sidebar>
+  );
+};
 
 const Chat = () => {
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -21,6 +57,8 @@ const Chat = () => {
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  const clearMessages = () => setMessages([]);
 
   const send = async () => {
     const text = input.trim();
@@ -95,7 +133,9 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col">
+    <SidebarProvider>
+      <div className="min-h-screen w-full flex bg-[#0a0a0a] text-white">
+        <ChatSidebar onNewChat={clearMessages} onClearChat={clearMessages} />
       <header className="border-b border-white/10 px-4 py-3 flex items-center gap-3 sticky top-0 bg-[#0a0a0a]/90 backdrop-blur z-10">
         <Link to="/#features" className="p-2 rounded-full hover:bg-white/10 transition-colors">
           <ArrowLeft className="w-5 h-5" />
