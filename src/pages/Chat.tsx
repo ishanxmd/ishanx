@@ -9,7 +9,7 @@ const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 const Chat = () => {
   const [messages, setMessages] = useState<Msg[]>([
-    { role: "assistant", content: "Hi! I'm ISHAN-X AI. Ask me anything." },
+    { role: "assistant", content: "Hi! I'm your AI assistant. Ask me anything — from coding and writing to general knowledge and brainstorming." },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -105,8 +105,8 @@ const Chat = () => {
           <ArrowLeft className="w-5 h-5" />
         </Link>
         <div>
-          <h1 className="text-base font-semibold">ISHAN-X AI</h1>
-          <p className="text-xs text-white/50">Powered by ISHAN-X AI</p>
+          <h1 className="text-base font-semibold">AI Assistant</h1>
+          <p className="text-xs text-white/50">General-purpose AI</p>
         </div>
       </header>
 
@@ -149,7 +149,7 @@ const Chat = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={onKey}
             rows={1}
-            placeholder="Message ISHAN-X AI..."
+            placeholder="Message AI Assistant..."
             className="flex-1 resize-none max-h-40 rounded-2xl bg-white/[0.06] border border-white/10 px-4 py-3 text-sm md:text-base text-white placeholder:text-white/40 focus:outline-none focus:border-[#0071e3] transition-colors"
           />
           <button

@@ -167,7 +167,7 @@ const ChatWidget = () => {
             className="fixed bottom-24 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-96 h-[70vh] max-h-[70vh] flex flex-col glass-card overflow-hidden border-primary/20"
           >
             {/* Header */}
-            <div className="px-4 py-3 ×gradient-primary flex items-center gap-3">
+            <div className="px-4 py-3 gradient-primary flex items-center gap-3">
               <Bot className="w-6 h-6 text-primary-foreground" />
               <div>
                 <div className="font-display text-sm tracking-wider text-primary-foreground">AI Assistant</div>
