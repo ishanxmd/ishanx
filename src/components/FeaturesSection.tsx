@@ -6,7 +6,7 @@ const features = [
   { icon: LayoutGrid, title: "Movies & TV", desc: "Download Sinhala subtitled movies directly." },
   { icon: EyeOff, title: "Privacy Pro", desc: "View Once recovery and Anti-Delete system." },
   { icon: Download, title: "Downloader", desc: "TikTok, FB, Insta & YouTube support." },
-  { icon: MessageCircle, title: "AI Chat", desc: "Integrated ISHAN-X AI for smart conversations.", href: "/chat" },
+  { icon: MessageCircle, title: "AI Chat", desc: "General-purpose AI assistant for any topic.", href: "/chat" },
   { icon: UsersRound, title: "Group Tools", desc: "Full admin control and member management." },
   { icon: Music, title: "Music Hub", desc: "MP3 Songs with lyrics and album art." },
 ];
