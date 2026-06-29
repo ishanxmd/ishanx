@@ -8,10 +8,10 @@ type Message = { role: "user" | "assistant"; content: string };
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
 const quickReplies = [
-  "What is ISHAN BETA MD?",
-  "How to get pair code?",
-  "List all commands",
-  "How to deploy?",
+  "Explain quantum computing simply",
+  "Write a Python function",
+  "Help me brainstorm ideas",
+  "What are today's top headlines?",
 ];
 
 async function streamChat({
@@ -99,7 +99,7 @@ async function streamChat({
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "👋 Hi! I'm the **ISHAN-X AI Assistant**. How can I help you today? Choose a question below or type your own!" },
+    { role: "assistant", content: "👋 Hi! I'm your AI assistant. Ask me anything — from coding and writing to general knowledge and brainstorming." },
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -154,7 +154,7 @@ const ChatWidget = () => {
         className="fixed bottom-6 right-6 z-50 px-5 h-12 rounded-full bg-[#0071e3] hover:bg-[#0077ed] flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
         whileTap={{ scale: 0.95 }}
       >
-        {isOpen ? <X className="w-5 h-5 text-primary-foreground" /> : <><MessageCircle className="w-5 h-5 text-primary-foreground" /><span className="font-display text-xs tracking-widest text-primary-foreground">Support AI</span></>}
+        {isOpen ? <X className="w-5 h-5 text-primary-foreground" /> : <><MessageCircle className="w-5 h-5 text-primary-foreground" /><span className="font-display text-xs tracking-widest text-primary-foreground">AI Chat</span></>}
       </motion.button>
 
       <AnimatePresence>
@@ -170,13 +170,13 @@ const ChatWidget = () => {
             <div className="px-4 py-3 gradient-primary flex items-center gap-3">
               <Bot className="w-6 h-6 text-primary-foreground" />
               <div>
-                <div className="font-display text-sm tracking-wider text-primary-foreground">ISHAN-X AI</div>
-                <div className="text-xs text-primary-foreground/70">Assistant</div>
+                <div className="font-display text-sm tracking-wider text-primary-foreground">AI Assistant</div>
+                <div className="text-xs text-primary-foreground/70">General-purpose AI</div>
               </div>
               <div className="ml-auto flex items-center gap-2">
                 <button
                   onClick={() => {
-                    setMessages([{ role: "assistant", content: "👋 Hi! I'm the **ISHAN-X AI Assistant**. How can I help you today? Choose a question below or type your own!" }]);
+                    setMessages([{ role: "assistant", content: "👋 Hi! I'm your AI assistant. Ask me anything — from coding and writing to general knowledge and brainstorming." }]);
                     setInput("");
                   }}
                   title="Clear chat"
