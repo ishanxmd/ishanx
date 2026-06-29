@@ -8,9 +8,7 @@ const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 const Chat = () => {
-  const [messages, setMessages] = useState<Msg[]>([
-    { role: "assistant", content: "Hi! I'm your AI assistant. Ask me anything — from coding and writing to general knowledge and brainstorming." },
-  ]);
+  const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
@@ -39,9 +37,7 @@ const Chat = () => {
           Authorization: `Bearer ${SUPABASE_KEY}`,
         },
         body: JSON.stringify({
-          messages: next.filter((m) => m.role !== "assistant" || messages.indexOf(m) !== 0).map(
-            (m) => ({ role: m.role, content: m.content }),
-          ),
+          messages: next.map((m) => ({ role: m.role, content: m.content })),
         }),
       });
       if (!res.ok) {
@@ -105,13 +101,18 @@ const Chat = () => {
           <ArrowLeft className="w-5 h-5" />
         </Link>
         <div>
-          <h1 className="text-base font-semibold">AI Assistant</h1>
-          <p className="text-xs text-white/50">General-purpose AI</p>
+          <h1 className="text-base font-semibold">ISHAN-X AI</h1>
+          <p className="text-xs text-white/50">General-purpose AI assistant</p>
         </div>
       </header>
 
       <main className="flex-1 overflow-y-auto">
         <div className="max-w-3xl mx-auto px-4 py-6 space-y-5">
+          {messages.length === 0 && !loading && (
+            <div className="text-center text-white/40 text-sm pt-20">
+              Ask ISHAN-X AI anything to start the conversation.
+            </div>
+          )}
           {messages.map((m, i) => (
             <div
               key={i}
@@ -149,7 +150,7 @@ const Chat = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={onKey}
             rows={1}
-            placeholder="Message AI Assistant..."
+            placeholder="Message ISHAN-X AI..."
             className="flex-1 resize-none max-h-40 rounded-2xl bg-white/[0.06] border border-white/10 px-4 py-3 text-sm md:text-base text-white placeholder:text-white/40 focus:outline-none focus:border-[#0071e3] transition-colors"
           />
           <button

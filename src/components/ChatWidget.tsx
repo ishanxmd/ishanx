@@ -7,12 +7,7 @@ type Message = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
-const quickReplies = [
-  "Explain quantum computing simply",
-  "Write a Python function",
-  "Help me brainstorm ideas",
-  "What are today's top headlines?",
-];
+const INITIAL_MESSAGES: Message[] = [];
 
 async function streamChat({
   messages,
@@ -98,9 +93,7 @@ async function streamChat({
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "👋 Hi! I'm your AI assistant. Ask me anything — from coding and writing to general knowledge and brainstorming." },
-  ]);
+  const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -133,8 +126,8 @@ const ChatWidget = () => {
       });
     };
 
-    // Only send the conversation history (exclude the initial greeting for cleaner context)
-    const apiMessages = newMessages.slice(1).map(({ role, content }) => ({ role, content }));
+    // Send full conversation history for context
+    const apiMessages = newMessages.map(({ role, content }) => ({ role, content }));
 
     await streamChat({
       messages: apiMessages,
@@ -170,13 +163,13 @@ const ChatWidget = () => {
             <div className="px-4 py-3 gradient-primary flex items-center gap-3">
               <Bot className="w-6 h-6 text-primary-foreground" />
               <div>
-                <div className="font-display text-sm tracking-wider text-primary-foreground">AI Assistant</div>
-                <div className="text-xs text-primary-foreground/70">General-purpose AI</div>
+                <div className="font-display text-sm tracking-wider text-primary-foreground">ISHAN-X AI</div>
+                <div className="text-xs text-primary-foreground/70">General-purpose AI assistant</div>
               </div>
               <div className="ml-auto flex items-center gap-2">
                 <button
                   onClick={() => {
-                    setMessages([{ role: "assistant", content: "👋 Hi! I'm your AI assistant. Ask me anything — from coding and writing to general knowledge and brainstorming." }]);
+                    setMessages(INITIAL_MESSAGES);
                     setInput("");
                   }}
                   title="Clear chat"
@@ -190,6 +183,11 @@ const ChatWidget = () => {
 
             {/* Messages */}
             <div ref={scrollRef} className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 space-y-3">
+              {messages.length === 0 && (
+                <div className="h-full flex items-center justify-center text-center text-xs text-muted-foreground px-4">
+                  Ask ISHAN-X AI anything to start the conversation.
+                </div>
+              )}
               {messages.map((msg, i) => (
                 <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   {msg.role === "assistant" && (
@@ -231,21 +229,6 @@ const ChatWidget = () => {
               )}
             </div>
 
-            {/* Quick replies */}
-            {messages.length <= 2 && (
-              <div className="px-4 pb-2 flex flex-wrap gap-1.5">
-                {quickReplies.map((q) => (
-                  <button
-                    key={q}
-                    onClick={() => handleSend(q)}
-                    disabled={isLoading}
-                    className="text-xs px-2.5 py-1.5 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors font-body disabled:opacity-50"
-                  >
-                    {q}
-                  </button>
-                ))}
-              </div>
-            )}
 
             {/* Input */}
             <div className="p-3 border-t border-border/50 flex gap-2">
