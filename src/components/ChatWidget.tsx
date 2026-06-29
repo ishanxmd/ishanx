@@ -183,6 +183,11 @@ const ChatWidget = () => {
 
             {/* Messages */}
             <div ref={scrollRef} className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 space-y-3">
+              {messages.length === 0 && (
+                <div className="h-full flex items-center justify-center text-center text-xs text-muted-foreground px-4">
+                  Ask ISHAN-X AI anything to start the conversation.
+                </div>
+              )}
               {messages.map((msg, i) => (
                 <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   {msg.role === "assistant" && (
