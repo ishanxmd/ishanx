@@ -150,7 +150,7 @@ const Chat = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={onKey}
             rows={1}
-            placeholder="Message AI Assistant..."
+            placeholder="Message ISHAN-X AI..."
             className="flex-1 resize-none max-h-40 rounded-2xl bg-white/[0.06] border border-white/10 px-4 py-3 text-sm md:text-base text-white placeholder:text-white/40 focus:outline-none focus:border-[#0071e3] transition-colors"
           />
           <button
