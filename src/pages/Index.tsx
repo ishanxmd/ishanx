@@ -33,6 +33,14 @@ const Index = () => {
 
   useEffect(() => {
     if (showSplash) return;
+    const savedY = sessionStorage.getItem("returnScrollY");
+    if (savedY !== null) {
+      sessionStorage.removeItem("returnScrollY");
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: parseInt(savedY, 10), behavior: "auto" });
+      });
+      return;
+    }
     const hash = window.location.hash.replace("#", "");
     if (!hash) return;
     requestAnimationFrame(() => {
