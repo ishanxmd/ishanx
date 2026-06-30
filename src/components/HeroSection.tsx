@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
+import heroShowcase from "@/assets/hero-showcase.webp.asset.json";
 
 const HeroSection = () => {
   return (
@@ -93,8 +94,13 @@ const HeroSection = () => {
           className="mt-14 md:mt-20 w-full max-w-5xl"
         >
           <img
-            src="https://raw.githubusercontent.com/minibotsjsisns/IMAGE_DATA/refs/heads/main/file_0000000090b871fb9f8bc639c6797377.png"
+            src={heroShowcase.url}
             alt="ISHAN BETA MD device showcase"
+            width={1528}
+            height={1029}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
             className="w-full h-auto object-contain"
           />
         </motion.div>
