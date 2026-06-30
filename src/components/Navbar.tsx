@@ -44,7 +44,7 @@ const Navbar = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-xl border-b border-white/10"
+      className="fixed top-0 left-0 right-0 z-50 bg-black/90 border-b border-white/10"
     >
       <div className="max-w-5xl mx-auto px-6 h-11 flex items-center justify-between">
         <button
