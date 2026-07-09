@@ -76,7 +76,7 @@ const HeroSection = () => {
             Get the repo
           </a>
           <a
-            href="ishan-x-pro-production.up.railway.app/"
+            href="https://ishan-x-pro-production.up.railway.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0071e3] hover:bg-[#0077ed] transition-colors px-7 py-3 text-white text-base md:text-lg font-body font-medium min-w-[200px]"
